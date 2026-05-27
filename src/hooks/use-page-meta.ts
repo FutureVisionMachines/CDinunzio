@@ -1,0 +1,22 @@
+import { useEffect } from 'react'
+
+interface PageMetaOptions {
+  title: string
+  description: string
+}
+
+export function usePageMeta({ title, description }: PageMetaOptions) {
+  useEffect(() => {
+    document.title = title
+
+    let descriptionTag = document.querySelector('meta[name="description"]')
+
+    if (!descriptionTag) {
+      descriptionTag = document.createElement('meta')
+      descriptionTag.setAttribute('name', 'description')
+      document.head.appendChild(descriptionTag)
+    }
+
+    descriptionTag.setAttribute('content', description)
+  }, [title, description])
+}
