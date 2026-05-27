@@ -42,6 +42,14 @@ This repo now includes a Render blueprint at [render.yaml](render.yaml).
 2. Add your custom domain in Settings > Custom Domains.
 3. Update DNS records as instructed by Render.
 
+### If styles are missing on Render
+
+1. Confirm this is a Static Site service (not a Web Service runtime).
+2. Confirm publish directory is ./dist.
+3. Open browser devtools on production and check /assets/*.css requests.
+4. CSS requests must return 200 and content-type text/css (not text/html).
+5. Trigger a Manual Deploy with Clear build cache enabled.
+
 ## Manual Render Setup (Alternative)
 
 If you do not want to use Blueprint setup:
