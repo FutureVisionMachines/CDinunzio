@@ -30,13 +30,22 @@ export function SiteLayout() {
 
       <header className="sticky top-0 z-40 border-b border-[rgba(141,160,179,0.22)] bg-[rgba(8,12,17,0.8)] backdrop-blur-md">
         <div className="section-shell flex h-20 items-center justify-between">
-          <NavLink to="/" className="group">
-            <p className="font-heading text-sm uppercase tracking-[0.18em] text-[#e8f1fa] md:text-base">
-              CDN Security Consultant
-            </p>
-            <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#93a6ba] transition group-hover:text-[#d6a869] md:text-[0.72rem]">
-              Christopher Dinunzio
-            </p>
+          <NavLink to="/" className="group flex items-center gap-3">
+            <img
+              src="/logo.png"
+              alt="Christopher Dinunzio logo"
+              className="h-9 w-9 rounded-sm border border-[rgba(149,167,185,0.3)] bg-[rgba(10,16,22,0.62)] p-1 object-contain md:h-10 md:w-10"
+              loading="eager"
+              decoding="async"
+            />
+            <div>
+              <p className="font-heading text-sm uppercase tracking-[0.18em] text-[#e8f1fa] md:text-base">
+                CDN Security Consultant
+              </p>
+              <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#93a6ba] transition group-hover:text-[#d6a869] md:text-[0.72rem]">
+                Christopher Dinunzio
+              </p>
+            </div>
           </NavLink>
 
           <nav className="hidden items-center gap-1 md:flex">

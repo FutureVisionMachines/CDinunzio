@@ -27,6 +27,7 @@ This repo now includes a Render blueprint at [render.yaml](render.yaml).
 3. Publish directory: dist
 4. SPA route rewrite so all routes resolve to index.html
 5. Security and cache headers
+6. Build-time fallback pages for direct route URLs (/about, /services, /contact, etc.)
 
 ### Deploy from your GitHub branch
 
