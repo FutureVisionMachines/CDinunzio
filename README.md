@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# CDN Security Consultant Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Premium React + Vite + TypeScript marketing platform for Christopher Dinunzio.
 
-Currently, two official plugins are available:
+## Local Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Install dependencies:
 
-## React Compiler
+   npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Start development server:
 
-## Expanding the ESLint configuration
+   npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Build for production:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+   npm run build
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Render Deployment (Recommended: Blueprint)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This repo now includes a Render blueprint at [render.yaml](render.yaml).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### What it configures
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Static hosting runtime on Render
+2. Build command: npm ci && npm run build
+3. Publish directory: dist
+4. SPA route rewrite so all routes resolve to index.html
+5. Security and cache headers
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Deploy from your GitHub branch
+
+1. Push this commit to the branch you want to deploy.
+2. In Render Dashboard, choose New > Blueprint.
+3. Connect the GitHub repo.
+4. Select the same branch you pushed.
+5. Apply the blueprint and deploy.
+
+### After first deploy
+
+1. Open service Settings and confirm Auto-Deploy is enabled for that branch.
+2. Add your custom domain in Settings > Custom Domains.
+3. Update DNS records as instructed by Render.
+
+## Manual Render Setup (Alternative)
+
+If you do not want to use Blueprint setup:
+
+1. New > Static Site
+2. Build command: npm ci && npm run build
+3. Publish directory: dist
+4. Add rewrite rule: /* -> /index.html
